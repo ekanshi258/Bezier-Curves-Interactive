@@ -8,7 +8,7 @@
 #define EUCLIDEAN_DIST 51
 #define WIDTH 500
 #define HEIGHT 500
-float tRate = 0.1;
+float tRate = 0.025;
 
 int squareDist(glm::vec2 pos1, glm::vec2 pos2);
 int nearbyIndex(glm::vec2 point);

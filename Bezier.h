@@ -46,7 +46,7 @@ public:
 
         for(int i=0; i<dif; i++)
         {
-            // Linear imterpolations
+            // Linear interpolations
             for(int j=0; j<temp.size()-1; j++)
             {
                 temp[j] = this->Lerp(temp[j], temp[j+1], t);
@@ -96,13 +96,7 @@ public:
         {
             this->controls.erase(this->controls.begin() + id);
             this->curve.clear();
-            float t = 0.0;
-            while(t <= 1.0)
-            {
-                glm::vec2 point = this->DeCasteljau(0, this->controls.size()-1, t);
-                this->curve.push_back(point);
-                t += this->tRate;
-            }
+            this->redraw(0);
         }
     }
     /**
@@ -116,13 +110,21 @@ public:
         {
             this->controls[id] = pos;
             this->curve.clear();
-            float t = 0.0;
-            while(t <= 1.0)
-            {
-                glm::vec2 point = this->DeCasteljau(0, this->controls.size()-1, t);
-                this->curve.push_back(point);
-                t += this->tRate;
-            }
+            this->redraw(0);
+        }
+    }
+    /**
+     * Helper function to redraw after any changes
+     * @param start starting index of the curve vector from where the drawing should start
+     */
+    void redraw(int start)
+    {
+        float t = 0.0;
+        while(t <= 1.0)
+        {
+            glm::vec2 point = this->DeCasteljau(start, this->controls.size()-1, t);
+            this->curve.push_back(point);
+            t += this->tRate;
         }
     }
 };
