@@ -30,6 +30,15 @@ Bezier curve(tRate);
 void drawBezier()
 {
     glClear(GL_COLOR_BUFFER_BIT);
+    glPointSize(3.5f);
+    glBegin(GL_POINTS);
+    for( auto p: curve.controls)
+    {
+        glColor3f(0.1, 0.5, 0.1);
+        glVertex2f(p.x, p.y);
+        
+    }
+    glEnd();
     glColor3f(0, 1, 0);
     glBegin(GL_LINE_STRIP);
     for( auto p: curve.controls)
@@ -37,6 +46,7 @@ void drawBezier()
         glVertex2f(p.x, p.y);
     }
     glEnd();
+   
     glColor3f(1, 0, 1);
     glBegin(GL_LINE_STRIP);
     for( auto p: curve.curve)
@@ -54,7 +64,7 @@ int main(int argc, char **argv)
     glutInitWindowSize(WIDTH, HEIGHT);
     glutInitWindowPosition(50, 50);
     glutCreateWindow("Assignment 3 - IS F311");
-    glClearColor(0.8, 0.8, 0.8, 0.8);
+    glClearColor(0.8, 0.8, 0.9, 0.8);
     gluOrtho2D(0, WIDTH, 0, HEIGHT);
     glutMotionFunc(handleMouse);
     glutMouseFunc(handleMouseClick);
