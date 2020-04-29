@@ -13,7 +13,7 @@ bezier1.exe: bezier1.o
 	$(CC) $^ -o $@ $(LDFLAGS)
 
 bezier1.o: bezier1.cpp $(DEPS)
-	$(CC) $(CFLAGS) -c -o $@ $<
+	$(CC) -c -o $@ $<
 
 clean:
 	$(RM)

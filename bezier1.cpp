@@ -16,7 +16,9 @@ void handleMouseClick(int click, int buttonStatus, int x, int y);
 void handleMouse(int x, int y);
 void resize(int w, int h);
 
+//! flag to check for drag movement
 bool move;
+//! Moved Control point
 int movement;
 
 //! Bezier Curve object.
@@ -124,14 +126,13 @@ int nearbyIndex(glm::vec2 point)
  */
 void handleMouseClick(int click, int buttonStatus, int x, int y)
 {
-     // drag using ctr + left click
-    int ctrl = glutGetModifiers();
-    if(ctrl == GLUT_ACTIVE_CTRL && click == GLUT_LEFT_BUTTON && buttonStatus == GLUT_DOWN)
+     // drag using middle
+    if(click == GLUT_MIDDLE_BUTTON && buttonStatus == GLUT_DOWN)
     {
         movement = nearbyIndex(glm::vec2(x, HEIGHT-y));
         if(movement != -1) move = true;
     }
-    else if(ctrl == GLUT_ACTIVE_CTRL && click == GLUT_LEFT_BUTTON && buttonStatus == GLUT_UP)
+    else if(click == GLUT_MIDDLE_BUTTON && buttonStatus == GLUT_UP)
     {
         move = false;
         curve.movePoint(movement, glm::vec2(x, HEIGHT - y));
