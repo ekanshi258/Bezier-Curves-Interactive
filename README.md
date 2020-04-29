@@ -7,12 +7,12 @@ De Casteljau's Algorithm for Bezier Curves (Interactive)
 
 ## Instructions:
 To run the program, 
-- run the command `g++ bezier1.cpp -lGL -lGLU -lglut`
-- run `./a.out`
+- run `make`
+- run `./bezier1.exe`
 
 ## Drawing a Curve:
-Use the middle  mouse button to create a new point.  
-Hold the left mouse button and drag to move the point around.  
+Use the left  mouse button to create a new point.  
+Hold the ctrl + left mouse button and drag to move the point around.  
 Use the right mouse button near a control point to delete the point.  
 
 A polyline joining all the control points will be created in green and the curve will be drawn in magenta.
