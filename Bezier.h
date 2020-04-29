@@ -96,7 +96,10 @@ public:
         {
             this->controls.erase(this->controls.begin() + id);
             this->curve.clear();
-            this->redraw(0);
+            if(controls.size() != 0)
+            {
+                this->redraw(0);
+            }
         }
     }
     /**
